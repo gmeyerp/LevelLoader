@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bcs2geajj12n6"]
+
+[ext_resource type="Script" uid="uid://kouuowbc2k54" path="res://constructed.gd" id="1_jbd7x"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qmg03"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykh0f"]
+albedo_color = Color(0.40908054, 0.7189099, 0.35848036, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qmg03"]
+material = SubResource("StandardMaterial3D_ykh0f")
+
+[node name="Block" type="StaticBody3D" unique_id=1618404199]
+script = ExtResource("1_jbd7x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42087659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_qmg03")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=559548998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_qmg03")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

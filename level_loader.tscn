@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://cbyrphb1jt6bm"]
+
+[ext_resource type="Script" uid="uid://vcb3y3l6wl30" path="res://level.gd" id="1_fnae2"]
+[ext_resource type="Script" uid="uid://dgthrr8amjavf" path="res://level_loader.gd" id="1_nfi1l"]
+[ext_resource type="PackedScene" uid="uid://bcs2geajj12n6" path="res://block.tscn" id="2_rby3a"]
+[ext_resource type="PackedScene" uid="uid://0hw8tlqo7fy1" path="res://coin.tscn" id="3_ox13j"]
+[ext_resource type="Script" uid="uid://dd2fdycjxd3qq" path="res://adapter.gd" id="5_dc8xe"]
+[ext_resource type="PackedScene" uid="uid://7tc6jc8t0p3f" path="res://player.tscn" id="6_dc8xe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fnae2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_bottom_color = Color(0.08449463, 0.18823475, 0.24228176, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rby3a"]
+sky_material = SubResource("ProceduralSkyMaterial_fnae2")
+
+[sub_resource type="Environment" id="Environment_ox13j"]
+background_mode = 2
+sky = SubResource("Sky_rby3a")
+glow_enabled = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_qmg03"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbd7x"]
+albedo_color = Color(0.41812682, 0.27888092, 0.1730411, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
+material = SubResource("StandardMaterial3D_jbd7x")
+size = Vector2(12, 12)
+
+[node name="LevelLoader" type="Node3D" unique_id=1863142151 node_paths=PackedStringArray("player")]
+script = ExtResource("1_nfi1l")
+player = NodePath("Player")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=943989507]
+environment = SubResource("Environment_ox13j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=863949327]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Level" type="StaticBody3D" parent="." unique_id=2105470311]
+script = ExtResource("1_fnae2")
+cube = ExtResource("2_rby3a")
+coin = ExtResource("3_ox13j")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level" unique_id=1170538968]
+shape = SubResource("WorldBoundaryShape3D_qmg03")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=401666810]
+mesh = SubResource("PlaneMesh_qmg03")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=194803008]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
+projection = 1
+size = 13.0
+
+[node name="Adapter" type="Node" parent="." unique_id=654921943]
+script = ExtResource("5_dc8xe")
+block_scene = ExtResource("2_rby3a")
+coin_scene = ExtResource("3_ox13j")
+
+[node name="Player" parent="." unique_id=1570885799 instance=ExtResource("6_dc8xe")]
+
+[connection signal="input_event" from="Level" to="Level" method="_on_input_event"]
