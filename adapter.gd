@@ -55,6 +55,7 @@ func player_to_data(player : Node3D) -> Dictionary:
 	return data
 
 func data_to_tree(data : Dictionary) -> Node3D:
+	print("New tree")
 	var tree = tree_scene.instantiate()
 	tree.position.x = data.get("position.x")
 	tree.position.y = data.get("position.y")
