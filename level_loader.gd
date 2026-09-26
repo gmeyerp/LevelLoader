@@ -5,37 +5,46 @@ extends Node3D
 @onready var adapter: Adapter = $Adapter
 @export var data_to_save : Array[Dictionary]
 @onready var level: StaticBody3D = $Level
+@onready var json_request: HTTPRequest = $JsonRequest
 
 const PATH: String = "user://"
 var file_name: String = "level.res"
+
+func _ready() -> void:
+	json_request.request_completed.connect(on_request_completed)
+
+func on_request_completed(result, _response_code, _header, body) -> void:
+	print("Request completed")
+	if result != 0:
+		print("Error")
+	else:
+		print(body.get_string_from_utf8())
+		load_level(body.get_string_from_utf8())
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		save_level()
 	if event.is_action_pressed("ui_cancel"):
-		load_level()
+		json_request.request(url)
 
-func load_level() -> void:
+func load_level(json_string : String) -> void:
 	clear_level()
-	var json_string #http request
-	var save_file = FileAccess.open("user://savegame.json", FileAccess.READ)
-	json_string = save_file.get_line()
+	#var save_file = FileAccess.open("user://savegame.json", FileAccess.READ)
+	#json_string = save_file.get_line()
+	
+	
 	var data_array = decode_json(json_string)
 	
 	for d in data_array:
-		print(d)
 		var element = d.get("element")
 		if not element:
 			print("Not element")
 			continue
 		if element == "Block":
-			print("Element Block")
 			level.add_child(adapter.data_to_block(d))
 		elif element == "Coin":
-			print("Element Coin")
 			level.add_child(adapter.data_to_coin(d))
 		elif element == "Player":
-			print("Element Player")
 			player.position = adapter.data_to_player(d)
 
 func decode_json(json_string : String):

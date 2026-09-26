@@ -32,6 +32,7 @@ size = Vector2(12, 12)
 [node name="LevelLoader" type="Node3D" unique_id=1863142151 node_paths=PackedStringArray("player")]
 script = ExtResource("1_nfi1l")
 player = NodePath("Player")
+url = "https://raw.githubusercontent.com/gmeyerp/backend/refs/heads/main/savegame.json"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=943989507]
 environment = SubResource("Environment_ox13j")
@@ -62,5 +63,7 @@ block_scene = ExtResource("2_rby3a")
 coin_scene = ExtResource("3_ox13j")
 
 [node name="Player" parent="." unique_id=1570885799 instance=ExtResource("6_dc8xe")]
+
+[node name="JsonRequest" type="HTTPRequest" parent="." unique_id=1295398470]
 
 [connection signal="input_event" from="Level" to="Level" method="_on_input_event"]
