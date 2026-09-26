@@ -1,18 +1,37 @@
 [gd_scene format=3 uid="uid://7tc6jc8t0p3f"]
 
 [ext_resource type="Script" uid="uid://b7gg66mv6ebxm" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://btktlbr5tciis" path="res://Assets/Player.glb" id="2_onrkg"]
+[ext_resource type="Material" uid="uid://bgtv640qcu3cn" path="res://Materials/Red.tres" id="3_i3pqv"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ykh0f"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_psmbb"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_yq2fg"]
+size = Vector3(0.5361328, 1.4342194, 0.47558594)
 
 [node name="Player" type="CharacterBody3D" unique_id=1570885799]
 script = ExtResource("1_4flbx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=853671651]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_ykh0f")
+[node name="Player" parent="." unique_id=1509828910 instance=ExtResource("2_onrkg")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=932268624]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-mesh = SubResource("SphereMesh_psmbb")
+[node name="Tronco" parent="Player" index="0" unique_id=884358900]
+material_override = ExtResource("3_i3pqv")
+
+[node name="BraçoDireito" parent="Player/Tronco" index="0" unique_id=1913340952]
+material_override = ExtResource("3_i3pqv")
+
+[node name="BraçoEsquerdo" parent="Player/Tronco" index="1" unique_id=893180027]
+material_override = ExtResource("3_i3pqv")
+
+[node name="Cabeça" parent="Player/Tronco" index="2" unique_id=1228028904]
+material_override = ExtResource("3_i3pqv")
+
+[node name="PernaDireita" parent="Player/Tronco" index="3" unique_id=1143183411]
+material_override = ExtResource("3_i3pqv")
+
+[node name="PernaEsquerda" parent="Player/Tronco" index="4" unique_id=1975608885]
+material_override = ExtResource("3_i3pqv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2029698745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0034179688, 0.7103653, 0.0063476563)
+shape = SubResource("BoxShape3D_yq2fg")
+
+[editable path="Player"]

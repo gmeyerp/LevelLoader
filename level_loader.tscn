@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dgthrr8amjavf" path="res://level_loader.gd" id="1_nfi1l"]
 [ext_resource type="PackedScene" uid="uid://bcs2geajj12n6" path="res://block.tscn" id="2_rby3a"]
 [ext_resource type="PackedScene" uid="uid://0hw8tlqo7fy1" path="res://coin.tscn" id="3_ox13j"]
+[ext_resource type="PackedScene" uid="uid://dnrwd04elfpn" path="res://Assets/Meshes/Tree.tscn" id="5_213bm"]
 [ext_resource type="Script" uid="uid://dd2fdycjxd3qq" path="res://adapter.gd" id="5_dc8xe"]
 [ext_resource type="PackedScene" uid="uid://7tc6jc8t0p3f" path="res://player.tscn" id="6_dc8xe"]
 
@@ -47,15 +48,30 @@ cube = ExtResource("2_rby3a")
 coin = ExtResource("3_ox13j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level" unique_id=1170538968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033037186, 0.016097307, 0.007950306)
 shape = SubResource("WorldBoundaryShape3D_qmg03")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level" unique_id=401666810]
 mesh = SubResource("PlaneMesh_qmg03")
 
+[node name="Tree" parent="Level" unique_id=926808761 instance=ExtResource("5_213bm")]
+transform = Transform3D(-0.30405596, 0, 0.3040559, 0, 0.43, 0, -0.3040559, 0, -0.30405596, 5.0885983, -0.07615554, 4.441336)
+
+[node name="Tree3" parent="Level" unique_id=146249218 instance=ExtResource("5_213bm")]
+transform = Transform3D(0.37239093, 0, -0.21499999, 0, 0.42999995, 0, 0.21499999, 0, 0.37239093, -4.9114017, -0.27653086, -5.558664)
+
+[node name="Tree4" parent="Level" unique_id=1546318490 instance=ExtResource("5_213bm")]
+transform = Transform3D(-0.37239096, 0, -0.21500003, 0, 0.43, 0, 0.21500003, 0, -0.37239096, -4.9114017, -0.27209747, 4.441336)
+
+[node name="Tree2" parent="Level" unique_id=1721344574 instance=ExtResource("5_213bm")]
+transform = Transform3D(-0.37239093, 0, -0.21500002, 0, 0.43, 0, 0.21500002, 0, -0.37239093, 5.0885983, -0.2278086, -5.558664)
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=194803008]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.7071068, 0.7071068, 0, -0.7071068, 0.7071068, 0, 7, 6)
 projection = 1
 size = 13.0
+near = 0.001
+far = 4010.65
 
 [node name="Adapter" type="Node" parent="." unique_id=654921943]
 script = ExtResource("5_dc8xe")
@@ -63,6 +79,7 @@ block_scene = ExtResource("2_rby3a")
 coin_scene = ExtResource("3_ox13j")
 
 [node name="Player" parent="." unique_id=1570885799 instance=ExtResource("6_dc8xe")]
+transform = Transform3D(1, 0, 0, 0, 0.86602545, 0.5, 0, -0.5, 0.86602545, 0, 0, 0)
 
 [node name="JsonRequest" type="HTTPRequest" parent="." unique_id=1295398470]
 
