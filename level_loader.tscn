@@ -28,7 +28,7 @@ albedo_color = Color(0.41812682, 0.27888092, 0.1730411, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qmg03"]
 material = SubResource("StandardMaterial3D_jbd7x")
-size = Vector2(12, 12)
+size = Vector2(25, 25)
 
 [node name="LevelLoader" type="Node3D" unique_id=1863142151 node_paths=PackedStringArray("player")]
 script = ExtResource("1_nfi1l")

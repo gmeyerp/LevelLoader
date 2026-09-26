@@ -46,7 +46,7 @@ _data = {
 &"coin_spin": SubResource("Animation_d5gmh")
 }
 
-[node name="Coin" type="AnimatableBody3D" unique_id=327251199]
+[node name="Coin" type="Area3D" unique_id=783829323]
 script = ExtResource("1_d5gmh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1740219789]

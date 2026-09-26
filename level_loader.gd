@@ -46,6 +46,8 @@ func load_level(json_string : String) -> void:
 			level.add_child(adapter.data_to_coin(d))
 		elif element == "Player":
 			player.position = adapter.data_to_player(d)
+		elif element == "Tree":
+			level.add_child(adapter.data_to_tree(d))
 
 func decode_json(json_string : String):
 	var json = JSON.new()
@@ -65,6 +67,8 @@ func save_level() -> void:
 			data_to_save.append(adapter.block_to_data(e))
 		elif e is Coin:
 			data_to_save.append(adapter.coin_to_data(e))
+		elif e is TreeBlock:
+			data_to_save.append(adapter.tree_to_data(e))
 	data_to_save.append(adapter.player_to_data(player))
 	var json = JSON.stringify(data_to_save)
 	var save_file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
@@ -73,7 +77,7 @@ func save_level() -> void:
 func clear_level() -> void:
 	var level_elements := level.get_children()
 	for e in level_elements:
-		if e is Block or e is Coin:
+		if e is Block or e is Coin or e is TreeBlock:
 			e.queue_free()
 
 func create_block():

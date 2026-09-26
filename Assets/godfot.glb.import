@@ -47,7 +47,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Meshes/Cube.res",
+"save_to_file/fallback_path": "res://Assets/Meshes/Cube.res",
 "save_to_file/path": "uid://b0kakr6kjfqx3"
 },
 "godfot_GeometricForm": {
@@ -56,7 +56,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Meshes/tetraedral.res",
+"save_to_file/fallback_path": "res://Assets/Meshes/tetraedral.res",
 "save_to_file/path": "uid://dbcg6snnfsl4y"
 },
 "godfot_Plane": {
@@ -65,7 +65,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Meshes/coin.res",
+"save_to_file/fallback_path": "res://Assets/Meshes/coin.res",
 "save_to_file/path": "uid://dn0jrv5bvd3wt"
 },
 "godfot_Tree": {
@@ -74,7 +74,7 @@ _subresources={
 "generate/shadow_meshes": 0,
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://Meshes/tree.res",
+"save_to_file/fallback_path": "res://Assets/Meshes/tree.res",
 "save_to_file/path": "uid://dnbpl4gdnptxq"
 }
 }
