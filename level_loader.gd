@@ -29,8 +29,8 @@ func _input(event: InputEvent) -> void:
 
 func load_level(json_string : String) -> void:
 	clear_level()
-	var save_file = FileAccess.open("user://savegame.json", FileAccess.READ)
-	json_string = save_file.get_line()
+	#var save_file = FileAccess.open("user://savegame.json", FileAccess.READ)
+	#json_string = save_file.get_line()
 	
 	
 	var data_array = decode_json(json_string)
